@@ -70,10 +70,9 @@ public class OrderController {
      */
     // 이메일 유효성 검사를 위한 @Validated 추가, HTTP 코드 201 Created 설정.
     @PostMapping
-    public ResponseEntity<Void> postOrder(@Validated @RequestBody OrderRequestDTO requestDTO) {
-        orderService.placeOrder(requestDTO.getCustomerName(), requestDTO.getCustomerEmail()
-                , requestDTO.getProductIdList(), requestDTO.getQuantityList());
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<Order> postOrder(@Validated @RequestBody OrderRequestDTO requestDTO) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(orderService.placeOrder(requestDTO.getCustomerName(), requestDTO.getCustomerEmail()
+                , requestDTO.getProductIdList(), requestDTO.getQuantityList()));
     }
 
 }
