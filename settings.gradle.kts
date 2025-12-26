@@ -1,1 +1,1 @@
-rootProject.name = "coding"
+rootProject.name = "coding-test"
